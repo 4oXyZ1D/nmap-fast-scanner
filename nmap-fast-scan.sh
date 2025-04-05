@@ -99,7 +99,7 @@ scan_host() {
     current_step=$((current_step + 1))
     progress $((current_step * 100 / total_steps))
     local ports
-    ports=$(nmap -p- --min-rate=500 $initial_scan_ping_flag= "$host" | grep '^[0-9]' | cut -d '/' -f1 | tr '\n' ',' | sed 's/,$//')
+    ports=$(nmap -p- --min-rate=500 $initial_scan_ping_flag "$host" | grep '^[0-9]' | cut -d '/' -f1 | tr '\n' ',' | sed 's/,$//')
     
     if [ -z "$ports" ]; then
         echo -e "\n${YELLOW}[!] No open ports found${NC}"
