@@ -6,6 +6,7 @@ It operates in two stages. The first one performs a normal quick scan, the secon
 Final version contains flags --ping, --list and --cve
 
 Usage:
+
 0. Basic usage (fast_scan):
 
 ./nmap-fast-scan.sh example.com
