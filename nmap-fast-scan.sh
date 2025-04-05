@@ -81,22 +81,25 @@ scan_host() {
     
     # Ping check logic
     local host_flags=""
+    local initial_scan_ping_flag=""
     if $ping_check; then
         current_step=$((current_step + 1))
         progress $((current_step * 100 / total_steps))
         if ! ping -c 1 -W 1 "$host" &> /dev/null; then
             echo -e "\n${YELLOW}[!] Host not responding, using -Pn${NC}"
             host_flags="-Pn"
+            initial_scan_ping_flag="-Pn"
         fi
     else
         host_flags="-Pn"
+        initial_scan_ping_flag="-Pn"
     fi
 
     # Port scanning
     current_step=$((current_step + 1))
     progress $((current_step * 100 / total_steps))
     local ports
-    ports=$(nmap -p- --min-rate=500 $host_flags "$host" | grep '^[0-9]' | cut -d '/' -f1 | tr '\n' ',' | sed 's/,$//')
+    ports=$(nmap -p- --min-rate=500 $initial_scan_ping_flag= "$host" | grep '^[0-9]' | cut -d '/' -f1 | tr '\n' ',' | sed 's/,$//')
     
     if [ -z "$ports" ]; then
         echo -e "\n${YELLOW}[!] No open ports found${NC}"
