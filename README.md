@@ -9,8 +9,8 @@ Final version contains flags **--ping**, **--list** and **--cve**
 
 0. Basic usage (fast_scan):
 
-_./nmap-fast-scan.sh example.com
-_
+_./nmap-fast-scan.sh example.com_
+
 1. Usage with pingability check (just adds -Pn to nmap if host is unreachable):
 
 _./nmap-fast-scan.sh --ping example.com_
