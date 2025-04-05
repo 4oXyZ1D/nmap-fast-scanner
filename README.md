@@ -27,7 +27,9 @@ Usage:
 
 ./nmap-fast-scan.sh 192.168.1.1 192.168.1.2 192.168.1.3
 
+
 Every scans saves in /tmp/nmap_scans/ with unique name.
+
 
 Requirements:
 1. uuidgen
